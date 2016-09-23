@@ -1,0 +1,1432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://INEEL.org.mx/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://INEEL.org.mx/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://INEEL.org.mx/">
+      <s:element name="MKSIAPWS95T">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SepBoundary" type="tns:WtrSepBoundary" />
+            <s:element minOccurs="1" maxOccurs="1" name="Temp" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="WtrSepBoundary">
+        <s:restriction base="s:string">
+          <s:enumeration value="Undefined" />
+          <s:enumeration value="Sublimation" />
+          <s:enumeration value="Saturation" />
+          <s:enumeration value="CriticalIsochor" />
+          <s:enumeration value="IceIMelting" />
+          <s:enumeration value="IceIII_VIIMelting" />
+          <s:enumeration value="MinimumVolume" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="MKSIAPWS95TResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MKSIAPWS95TResult" type="tns:WtrProps" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WtrProps">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Temp" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Press" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="State" type="tns:WtrState" />
+          <s:element minOccurs="1" maxOccurs="1" name="Liquid" type="tns:PhaseProps" />
+          <s:element minOccurs="1" maxOccurs="1" name="Vapor" type="tns:PhaseProps" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="WtrState">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="TriplePoint" />
+          <s:enumeration value="CriticalPoint" />
+          <s:enumeration value="MinimumVolumeSaturationPoint" />
+          <s:enumeration value="IceI_Liquid_Liquid1Point" />
+          <s:enumeration value="IceI_IceIIIPoint" />
+          <s:enumeration value="Sublimation" />
+          <s:enumeration value="SaturationLiquid_Vapor" />
+          <s:enumeration value="SaturationLiquid1_Vapor" />
+          <s:enumeration value="CriticalIsochor" />
+          <s:enumeration value="IceI_LiquidCurve" />
+          <s:enumeration value="IceI_Liquid1Curve" />
+          <s:enumeration value="IceIII_IceVIIMeltingCurve" />
+          <s:enumeration value="MinimumVolumeCurve" />
+          <s:enumeration value="SuperheatedSteam" />
+          <s:enumeration value="CompressedLiquid" />
+          <s:enumeration value="CompressedLiquid1" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PhaseProps">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Volume" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Density" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Zo" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="U" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="H" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="G" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="A" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="S" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cp" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cv" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CTE" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Ziso" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="VelS" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="dPdT" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="dTdV" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="dVdP" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="JTC" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="IJTC" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Vis" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ThrmCond" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SurfTen" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrdNum" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DielCons" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MKSIAPWS95P">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SepBoundary" type="tns:WtrSepBoundary" />
+            <s:element minOccurs="1" maxOccurs="1" name="Press" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MKSIAPWS95PResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MKSIAPWS95PResult" type="tns:WtrProps" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MKSIAPWS95TP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Temp" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Press" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MKSIAPWS95TPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MKSIAPWS95TPResult" type="tns:WtrProps" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MKSIAPWSIF97T">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SepBoundary" type="tns:WtrSepBoundary" />
+            <s:element minOccurs="1" maxOccurs="1" name="Temp" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MKSIAPWSIF97TResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MKSIAPWSIF97TResult" type="tns:WtrProps" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MKSIAPWSIF97P">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SepBoundary" type="tns:WtrSepBoundary" />
+            <s:element minOccurs="1" maxOccurs="1" name="Press" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MKSIAPWSIF97PResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MKSIAPWSIF97PResult" type="tns:WtrProps" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MKSIAPWSIF97TP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Temp" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Press" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MKSIAPWSIF97TPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MKSIAPWSIF97TPResult" type="tns:WtrProps" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IAPWS95T">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SepBoundary" type="tns:WtrSepBoundary" />
+            <s:element minOccurs="1" maxOccurs="1" name="Temp" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IAPWS95TResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IAPWS95TResult" type="tns:WtrProps" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IAPWS95P">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SepBoundary" type="tns:WtrSepBoundary" />
+            <s:element minOccurs="1" maxOccurs="1" name="Press" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IAPWS95PResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IAPWS95PResult" type="tns:WtrProps" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IAPWS95TP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Temp" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Press" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IAPWS95TPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IAPWS95TPResult" type="tns:WtrProps" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IAPWSIF97T">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SepBoundary" type="tns:WtrSepBoundary" />
+            <s:element minOccurs="1" maxOccurs="1" name="Temp" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IAPWSIF97TResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IAPWSIF97TResult" type="tns:WtrProps" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IAPWSIF97P">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SepBoundary" type="tns:WtrSepBoundary" />
+            <s:element minOccurs="1" maxOccurs="1" name="Press" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IAPWSIF97PResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IAPWSIF97PResult" type="tns:WtrProps" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IAPWSIF97TP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Temp" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Press" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IAPWSIF97TPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IAPWSIF97TPResult" type="tns:WtrProps" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalcVesselWtrHeating">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TMass" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="TVolume" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Temperature" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="TLiqVapFull" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalcVesselWtrHeatingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CalcVesselWtrHeatingResult" type="tns:WtrHeating" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WtrHeating">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Volume" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalMass" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Temperature" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Pressure" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="LiquidMass" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="VaporMass" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="WaterLevel" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TLiqVapFull" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TempLiqVapFull">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TMass" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="TVolume" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TempLiqVapFullResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TempLiqVapFullResult" type="tns:TLiqVapType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TLiqVapType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Temp" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CalcWaterLevel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TMass" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="TVolume" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Temp" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalcWaterLevelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CalcWaterLevelResult" type="tns:WaterLevel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WaterLevel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Level" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WtrProps" type="tns:WtrProps" />
+      <s:element name="WtrHeating" nillable="true" type="tns:WtrHeating" />
+      <s:element name="TLiqVapType" nillable="true" type="tns:TLiqVapType" />
+      <s:element name="WaterLevel" nillable="true" type="tns:WaterLevel" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="MKSIAPWS95TSoapIn">
+    <wsdl:part name="parameters" element="tns:MKSIAPWS95T" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95TSoapOut">
+    <wsdl:part name="parameters" element="tns:MKSIAPWS95TResponse" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95PSoapIn">
+    <wsdl:part name="parameters" element="tns:MKSIAPWS95P" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95PSoapOut">
+    <wsdl:part name="parameters" element="tns:MKSIAPWS95PResponse" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95TPSoapIn">
+    <wsdl:part name="parameters" element="tns:MKSIAPWS95TP" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95TPSoapOut">
+    <wsdl:part name="parameters" element="tns:MKSIAPWS95TPResponse" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97TSoapIn">
+    <wsdl:part name="parameters" element="tns:MKSIAPWSIF97T" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97TSoapOut">
+    <wsdl:part name="parameters" element="tns:MKSIAPWSIF97TResponse" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97PSoapIn">
+    <wsdl:part name="parameters" element="tns:MKSIAPWSIF97P" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97PSoapOut">
+    <wsdl:part name="parameters" element="tns:MKSIAPWSIF97PResponse" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97TPSoapIn">
+    <wsdl:part name="parameters" element="tns:MKSIAPWSIF97TP" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97TPSoapOut">
+    <wsdl:part name="parameters" element="tns:MKSIAPWSIF97TPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95TSoapIn">
+    <wsdl:part name="parameters" element="tns:IAPWS95T" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95TSoapOut">
+    <wsdl:part name="parameters" element="tns:IAPWS95TResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95PSoapIn">
+    <wsdl:part name="parameters" element="tns:IAPWS95P" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95PSoapOut">
+    <wsdl:part name="parameters" element="tns:IAPWS95PResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95TPSoapIn">
+    <wsdl:part name="parameters" element="tns:IAPWS95TP" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95TPSoapOut">
+    <wsdl:part name="parameters" element="tns:IAPWS95TPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97TSoapIn">
+    <wsdl:part name="parameters" element="tns:IAPWSIF97T" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97TSoapOut">
+    <wsdl:part name="parameters" element="tns:IAPWSIF97TResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97PSoapIn">
+    <wsdl:part name="parameters" element="tns:IAPWSIF97P" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97PSoapOut">
+    <wsdl:part name="parameters" element="tns:IAPWSIF97PResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97TPSoapIn">
+    <wsdl:part name="parameters" element="tns:IAPWSIF97TP" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97TPSoapOut">
+    <wsdl:part name="parameters" element="tns:IAPWSIF97TPResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalcVesselWtrHeatingSoapIn">
+    <wsdl:part name="parameters" element="tns:CalcVesselWtrHeating" />
+  </wsdl:message>
+  <wsdl:message name="CalcVesselWtrHeatingSoapOut">
+    <wsdl:part name="parameters" element="tns:CalcVesselWtrHeatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="TempLiqVapFullSoapIn">
+    <wsdl:part name="parameters" element="tns:TempLiqVapFull" />
+  </wsdl:message>
+  <wsdl:message name="TempLiqVapFullSoapOut">
+    <wsdl:part name="parameters" element="tns:TempLiqVapFullResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalcWaterLevelSoapIn">
+    <wsdl:part name="parameters" element="tns:CalcWaterLevel" />
+  </wsdl:message>
+  <wsdl:message name="CalcWaterLevelSoapOut">
+    <wsdl:part name="parameters" element="tns:CalcWaterLevelResponse" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95THttpGetIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Temp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95THttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95PHttpGetIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95PHttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95TPHttpGetIn">
+    <wsdl:part name="Temp" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95TPHttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97THttpGetIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Temp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97THttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97PHttpGetIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97PHttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97TPHttpGetIn">
+    <wsdl:part name="Temp" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97TPHttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95THttpGetIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Temp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95THttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95PHttpGetIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95PHttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95TPHttpGetIn">
+    <wsdl:part name="Temp" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95TPHttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97THttpGetIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Temp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97THttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97PHttpGetIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97PHttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97TPHttpGetIn">
+    <wsdl:part name="Temp" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97TPHttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="CalcVesselWtrHeatingHttpGetIn">
+    <wsdl:part name="TMass" type="s:string" />
+    <wsdl:part name="TVolume" type="s:string" />
+    <wsdl:part name="Temperature" type="s:string" />
+    <wsdl:part name="TLiqVapFull" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CalcVesselWtrHeatingHttpGetOut">
+    <wsdl:part name="Body" element="tns:WtrHeating" />
+  </wsdl:message>
+  <wsdl:message name="TempLiqVapFullHttpGetIn">
+    <wsdl:part name="TMass" type="s:string" />
+    <wsdl:part name="TVolume" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TempLiqVapFullHttpGetOut">
+    <wsdl:part name="Body" element="tns:TLiqVapType" />
+  </wsdl:message>
+  <wsdl:message name="CalcWaterLevelHttpGetIn">
+    <wsdl:part name="TMass" type="s:string" />
+    <wsdl:part name="TVolume" type="s:string" />
+    <wsdl:part name="Temp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CalcWaterLevelHttpGetOut">
+    <wsdl:part name="Body" element="tns:WaterLevel" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95THttpPostIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Temp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95THttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95PHttpPostIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95PHttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95TPHttpPostIn">
+    <wsdl:part name="Temp" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWS95TPHttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97THttpPostIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Temp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97THttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97PHttpPostIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97PHttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97TPHttpPostIn">
+    <wsdl:part name="Temp" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MKSIAPWSIF97TPHttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95THttpPostIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Temp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95THttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95PHttpPostIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95PHttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95TPHttpPostIn">
+    <wsdl:part name="Temp" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IAPWS95TPHttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97THttpPostIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Temp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97THttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97PHttpPostIn">
+    <wsdl:part name="SepBoundary" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97PHttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97TPHttpPostIn">
+    <wsdl:part name="Temp" type="s:string" />
+    <wsdl:part name="Press" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IAPWSIF97TPHttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrProps" />
+  </wsdl:message>
+  <wsdl:message name="CalcVesselWtrHeatingHttpPostIn">
+    <wsdl:part name="TMass" type="s:string" />
+    <wsdl:part name="TVolume" type="s:string" />
+    <wsdl:part name="Temperature" type="s:string" />
+    <wsdl:part name="TLiqVapFull" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CalcVesselWtrHeatingHttpPostOut">
+    <wsdl:part name="Body" element="tns:WtrHeating" />
+  </wsdl:message>
+  <wsdl:message name="TempLiqVapFullHttpPostIn">
+    <wsdl:part name="TMass" type="s:string" />
+    <wsdl:part name="TVolume" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TempLiqVapFullHttpPostOut">
+    <wsdl:part name="Body" element="tns:TLiqVapType" />
+  </wsdl:message>
+  <wsdl:message name="CalcWaterLevelHttpPostIn">
+    <wsdl:part name="TMass" type="s:string" />
+    <wsdl:part name="TVolume" type="s:string" />
+    <wsdl:part name="Temp" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CalcWaterLevelHttpPostOut">
+    <wsdl:part name="Body" element="tns:WaterLevel" />
+  </wsdl:message>
+  <wsdl:portType name="INEELSteamTablesSoap">
+    <wsdl:operation name="MKSIAPWS95T">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water along the separation boundaries in MKS units, considering T (K) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWS95TSoapIn" />
+      <wsdl:output message="tns:MKSIAPWS95TSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95P">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water along the separation boundaries in MKS units, considering P (Pa) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWS95PSoapIn" />
+      <wsdl:output message="tns:MKSIAPWS95PSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95TP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in MKS units, considering T (K) and P (Pa) as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWS95TPSoapIn" />
+      <wsdl:output message="tns:MKSIAPWS95TPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97T">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS-IF97 formulation, it calculates the thermodynamic properties of water along the separation boundaries in MKS units, considering T (K) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWSIF97TSoapIn" />
+      <wsdl:output message="tns:MKSIAPWSIF97TSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97P">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS-IF97 formulation, it calculates the thermodynamic properties of water along the separation boundaries in MKS units, considering P (Pa) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWSIF97PSoapIn" />
+      <wsdl:output message="tns:MKSIAPWSIF97PSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97TP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in MKS units, considering T (K) and P (Pa) as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWSIF97TPSoapIn" />
+      <wsdl:output message="tns:MKSIAPWSIF97TPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95T">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in the units originally programmed in Verma (2003), considering T (K) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWS95TSoapIn" />
+      <wsdl:output message="tns:IAPWS95TSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95P">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water along the separation boundaries in units originally programmed in Verma (2003), considering P (Pa) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWS95PSoapIn" />
+      <wsdl:output message="tns:IAPWS95PSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95TP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in units originally programmed in Verma (2003), considering T (K) and P (Pa) as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWS95TPSoapIn" />
+      <wsdl:output message="tns:IAPWS95TPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97T">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS-IF97 formulation, it calculates the thermodynamic properties of water along the separation boundaries in units originally programmed in Verma (2003), considering T (K) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWSIF97TSoapIn" />
+      <wsdl:output message="tns:IAPWSIF97TSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97P">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS-IF97 formulation, it calculates the thermodynamic properties of water along the separation boundaries in units originally programmed in Verma (2003), considering P (Pa) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWSIF97PSoapIn" />
+      <wsdl:output message="tns:IAPWSIF97PSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97TP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in units originally programmed in Verma (2003), considering T (K) and P (Pa) as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWSIF97TPSoapIn" />
+      <wsdl:output message="tns:IAPWSIF97TPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalcVesselWtrHeating">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">React Vessel: it calculates the pressure, liquid and vapor mass, and water level for a given experiment. First, one has to calculate the TLiqVapFull with the function TempLiqVapFull.</wsdl:documentation>
+      <wsdl:input message="tns:CalcVesselWtrHeatingSoapIn" />
+      <wsdl:output message="tns:CalcVesselWtrHeatingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TempLiqVapFull">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">React Vessel: it caclualtes the temperature at which  the container is fully filled with only vapor or liquid along the saturation curve. </wsdl:documentation>
+      <wsdl:input message="tns:TempLiqVapFullSoapIn" />
+      <wsdl:output message="tns:TempLiqVapFullSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalcWaterLevel">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">React Vessel: it caclualtes the water level at the temperature Temp for a given container of volume TVolume and having total mass Tmass. </wsdl:documentation>
+      <wsdl:input message="tns:CalcWaterLevelSoapIn" />
+      <wsdl:output message="tns:CalcWaterLevelSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="INEELSteamTablesHttpGet">
+    <wsdl:operation name="MKSIAPWS95T">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water along the separation boundaries in MKS units, considering T (K) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWS95THttpGetIn" />
+      <wsdl:output message="tns:MKSIAPWS95THttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95P">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water along the separation boundaries in MKS units, considering P (Pa) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWS95PHttpGetIn" />
+      <wsdl:output message="tns:MKSIAPWS95PHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95TP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in MKS units, considering T (K) and P (Pa) as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWS95TPHttpGetIn" />
+      <wsdl:output message="tns:MKSIAPWS95TPHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97T">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS-IF97 formulation, it calculates the thermodynamic properties of water along the separation boundaries in MKS units, considering T (K) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWSIF97THttpGetIn" />
+      <wsdl:output message="tns:MKSIAPWSIF97THttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97P">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS-IF97 formulation, it calculates the thermodynamic properties of water along the separation boundaries in MKS units, considering P (Pa) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWSIF97PHttpGetIn" />
+      <wsdl:output message="tns:MKSIAPWSIF97PHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97TP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in MKS units, considering T (K) and P (Pa) as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWSIF97TPHttpGetIn" />
+      <wsdl:output message="tns:MKSIAPWSIF97TPHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95T">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in the units originally programmed in Verma (2003), considering T (K) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWS95THttpGetIn" />
+      <wsdl:output message="tns:IAPWS95THttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95P">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water along the separation boundaries in units originally programmed in Verma (2003), considering P (Pa) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWS95PHttpGetIn" />
+      <wsdl:output message="tns:IAPWS95PHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95TP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in units originally programmed in Verma (2003), considering T (K) and P (Pa) as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWS95TPHttpGetIn" />
+      <wsdl:output message="tns:IAPWS95TPHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97T">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS-IF97 formulation, it calculates the thermodynamic properties of water along the separation boundaries in units originally programmed in Verma (2003), considering T (K) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWSIF97THttpGetIn" />
+      <wsdl:output message="tns:IAPWSIF97THttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97P">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS-IF97 formulation, it calculates the thermodynamic properties of water along the separation boundaries in units originally programmed in Verma (2003), considering P (Pa) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWSIF97PHttpGetIn" />
+      <wsdl:output message="tns:IAPWSIF97PHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97TP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in units originally programmed in Verma (2003), considering T (K) and P (Pa) as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWSIF97TPHttpGetIn" />
+      <wsdl:output message="tns:IAPWSIF97TPHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalcVesselWtrHeating">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">React Vessel: it calculates the pressure, liquid and vapor mass, and water level for a given experiment. First, one has to calculate the TLiqVapFull with the function TempLiqVapFull.</wsdl:documentation>
+      <wsdl:input message="tns:CalcVesselWtrHeatingHttpGetIn" />
+      <wsdl:output message="tns:CalcVesselWtrHeatingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TempLiqVapFull">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">React Vessel: it caclualtes the temperature at which  the container is fully filled with only vapor or liquid along the saturation curve. </wsdl:documentation>
+      <wsdl:input message="tns:TempLiqVapFullHttpGetIn" />
+      <wsdl:output message="tns:TempLiqVapFullHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalcWaterLevel">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">React Vessel: it caclualtes the water level at the temperature Temp for a given container of volume TVolume and having total mass Tmass. </wsdl:documentation>
+      <wsdl:input message="tns:CalcWaterLevelHttpGetIn" />
+      <wsdl:output message="tns:CalcWaterLevelHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="INEELSteamTablesHttpPost">
+    <wsdl:operation name="MKSIAPWS95T">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water along the separation boundaries in MKS units, considering T (K) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWS95THttpPostIn" />
+      <wsdl:output message="tns:MKSIAPWS95THttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95P">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water along the separation boundaries in MKS units, considering P (Pa) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWS95PHttpPostIn" />
+      <wsdl:output message="tns:MKSIAPWS95PHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95TP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in MKS units, considering T (K) and P (Pa) as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWS95TPHttpPostIn" />
+      <wsdl:output message="tns:MKSIAPWS95TPHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97T">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS-IF97 formulation, it calculates the thermodynamic properties of water along the separation boundaries in MKS units, considering T (K) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWSIF97THttpPostIn" />
+      <wsdl:output message="tns:MKSIAPWSIF97THttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97P">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS-IF97 formulation, it calculates the thermodynamic properties of water along the separation boundaries in MKS units, considering P (Pa) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWSIF97PHttpPostIn" />
+      <wsdl:output message="tns:MKSIAPWSIF97PHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97TP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in MKS units, considering T (K) and P (Pa) as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:MKSIAPWSIF97TPHttpPostIn" />
+      <wsdl:output message="tns:MKSIAPWSIF97TPHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95T">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in the units originally programmed in Verma (2003), considering T (K) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWS95THttpPostIn" />
+      <wsdl:output message="tns:IAPWS95THttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95P">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water along the separation boundaries in units originally programmed in Verma (2003), considering P (Pa) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWS95PHttpPostIn" />
+      <wsdl:output message="tns:IAPWS95PHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95TP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in units originally programmed in Verma (2003), considering T (K) and P (Pa) as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWS95TPHttpPostIn" />
+      <wsdl:output message="tns:IAPWS95TPHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97T">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS-IF97 formulation, it calculates the thermodynamic properties of water along the separation boundaries in units originally programmed in Verma (2003), considering T (K) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWSIF97THttpPostIn" />
+      <wsdl:output message="tns:IAPWSIF97THttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97P">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS-IF97 formulation, it calculates the thermodynamic properties of water along the separation boundaries in units originally programmed in Verma (2003), considering P (Pa) and SepBoundary as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWSIF97PHttpPostIn" />
+      <wsdl:output message="tns:IAPWSIF97PHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97TP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Using the IAPWS95 formulation, it calculates the thermodynamic properties of water in units originally programmed in Verma (2003), considering T (K) and P (Pa) as input parameters</wsdl:documentation>
+      <wsdl:input message="tns:IAPWSIF97TPHttpPostIn" />
+      <wsdl:output message="tns:IAPWSIF97TPHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalcVesselWtrHeating">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">React Vessel: it calculates the pressure, liquid and vapor mass, and water level for a given experiment. First, one has to calculate the TLiqVapFull with the function TempLiqVapFull.</wsdl:documentation>
+      <wsdl:input message="tns:CalcVesselWtrHeatingHttpPostIn" />
+      <wsdl:output message="tns:CalcVesselWtrHeatingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TempLiqVapFull">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">React Vessel: it caclualtes the temperature at which  the container is fully filled with only vapor or liquid along the saturation curve. </wsdl:documentation>
+      <wsdl:input message="tns:TempLiqVapFullHttpPostIn" />
+      <wsdl:output message="tns:TempLiqVapFullHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalcWaterLevel">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">React Vessel: it caclualtes the water level at the temperature Temp for a given container of volume TVolume and having total mass Tmass. </wsdl:documentation>
+      <wsdl:input message="tns:CalcWaterLevelHttpPostIn" />
+      <wsdl:output message="tns:CalcWaterLevelHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="INEELSteamTablesSoap" type="tns:INEELSteamTablesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MKSIAPWS95T">
+      <soap:operation soapAction="http://INEEL.org.mx/MKSIAPWS95T" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95P">
+      <soap:operation soapAction="http://INEEL.org.mx/MKSIAPWS95P" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95TP">
+      <soap:operation soapAction="http://INEEL.org.mx/MKSIAPWS95TP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97T">
+      <soap:operation soapAction="http://INEEL.org.mx/MKSIAPWSIF97T" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97P">
+      <soap:operation soapAction="http://INEEL.org.mx/MKSIAPWSIF97P" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97TP">
+      <soap:operation soapAction="http://INEEL.org.mx/MKSIAPWSIF97TP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95T">
+      <soap:operation soapAction="http://INEEL.org.mx/IAPWS95T" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95P">
+      <soap:operation soapAction="http://INEEL.org.mx/IAPWS95P" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95TP">
+      <soap:operation soapAction="http://INEEL.org.mx/IAPWS95TP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97T">
+      <soap:operation soapAction="http://INEEL.org.mx/IAPWSIF97T" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97P">
+      <soap:operation soapAction="http://INEEL.org.mx/IAPWSIF97P" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97TP">
+      <soap:operation soapAction="http://INEEL.org.mx/IAPWSIF97TP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalcVesselWtrHeating">
+      <soap:operation soapAction="http://INEEL.org.mx/CalcVesselWtrHeating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TempLiqVapFull">
+      <soap:operation soapAction="http://INEEL.org.mx/TempLiqVapFull" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalcWaterLevel">
+      <soap:operation soapAction="http://INEEL.org.mx/CalcWaterLevel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="INEELSteamTablesSoap12" type="tns:INEELSteamTablesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MKSIAPWS95T">
+      <soap12:operation soapAction="http://INEEL.org.mx/MKSIAPWS95T" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95P">
+      <soap12:operation soapAction="http://INEEL.org.mx/MKSIAPWS95P" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95TP">
+      <soap12:operation soapAction="http://INEEL.org.mx/MKSIAPWS95TP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97T">
+      <soap12:operation soapAction="http://INEEL.org.mx/MKSIAPWSIF97T" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97P">
+      <soap12:operation soapAction="http://INEEL.org.mx/MKSIAPWSIF97P" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97TP">
+      <soap12:operation soapAction="http://INEEL.org.mx/MKSIAPWSIF97TP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95T">
+      <soap12:operation soapAction="http://INEEL.org.mx/IAPWS95T" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95P">
+      <soap12:operation soapAction="http://INEEL.org.mx/IAPWS95P" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95TP">
+      <soap12:operation soapAction="http://INEEL.org.mx/IAPWS95TP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97T">
+      <soap12:operation soapAction="http://INEEL.org.mx/IAPWSIF97T" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97P">
+      <soap12:operation soapAction="http://INEEL.org.mx/IAPWSIF97P" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97TP">
+      <soap12:operation soapAction="http://INEEL.org.mx/IAPWSIF97TP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalcVesselWtrHeating">
+      <soap12:operation soapAction="http://INEEL.org.mx/CalcVesselWtrHeating" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TempLiqVapFull">
+      <soap12:operation soapAction="http://INEEL.org.mx/TempLiqVapFull" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalcWaterLevel">
+      <soap12:operation soapAction="http://INEEL.org.mx/CalcWaterLevel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="INEELSteamTablesHttpGet" type="tns:INEELSteamTablesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="MKSIAPWS95T">
+      <http:operation location="/MKSIAPWS95T" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95P">
+      <http:operation location="/MKSIAPWS95P" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95TP">
+      <http:operation location="/MKSIAPWS95TP" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97T">
+      <http:operation location="/MKSIAPWSIF97T" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97P">
+      <http:operation location="/MKSIAPWSIF97P" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97TP">
+      <http:operation location="/MKSIAPWSIF97TP" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95T">
+      <http:operation location="/IAPWS95T" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95P">
+      <http:operation location="/IAPWS95P" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95TP">
+      <http:operation location="/IAPWS95TP" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97T">
+      <http:operation location="/IAPWSIF97T" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97P">
+      <http:operation location="/IAPWSIF97P" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97TP">
+      <http:operation location="/IAPWSIF97TP" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalcVesselWtrHeating">
+      <http:operation location="/CalcVesselWtrHeating" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TempLiqVapFull">
+      <http:operation location="/TempLiqVapFull" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalcWaterLevel">
+      <http:operation location="/CalcWaterLevel" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="INEELSteamTablesHttpPost" type="tns:INEELSteamTablesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="MKSIAPWS95T">
+      <http:operation location="/MKSIAPWS95T" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95P">
+      <http:operation location="/MKSIAPWS95P" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWS95TP">
+      <http:operation location="/MKSIAPWS95TP" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97T">
+      <http:operation location="/MKSIAPWSIF97T" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97P">
+      <http:operation location="/MKSIAPWSIF97P" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MKSIAPWSIF97TP">
+      <http:operation location="/MKSIAPWSIF97TP" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95T">
+      <http:operation location="/IAPWS95T" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95P">
+      <http:operation location="/IAPWS95P" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWS95TP">
+      <http:operation location="/IAPWS95TP" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97T">
+      <http:operation location="/IAPWSIF97T" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97P">
+      <http:operation location="/IAPWSIF97P" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IAPWSIF97TP">
+      <http:operation location="/IAPWSIF97TP" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalcVesselWtrHeating">
+      <http:operation location="/CalcVesselWtrHeating" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TempLiqVapFull">
+      <http:operation location="/TempLiqVapFull" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalcWaterLevel">
+      <http:operation location="/CalcWaterLevel" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="INEELSteamTables">
+    <wsdl:port name="INEELSteamTablesSoap" binding="tns:INEELSteamTablesSoap">
+      <soap:address location="http://www.ineelgeosteamnet.com/INEELSteamTables.asmx" />
+    </wsdl:port>
+    <wsdl:port name="INEELSteamTablesSoap12" binding="tns:INEELSteamTablesSoap12">
+      <soap12:address location="http://www.ineelgeosteamnet.com/INEELSteamTables.asmx" />
+    </wsdl:port>
+    <wsdl:port name="INEELSteamTablesHttpGet" binding="tns:INEELSteamTablesHttpGet">
+      <http:address location="http://www.ineelgeosteamnet.com/INEELSteamTables.asmx" />
+    </wsdl:port>
+    <wsdl:port name="INEELSteamTablesHttpPost" binding="tns:INEELSteamTablesHttpPost">
+      <http:address location="http://www.ineelgeosteamnet.com/INEELSteamTables.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

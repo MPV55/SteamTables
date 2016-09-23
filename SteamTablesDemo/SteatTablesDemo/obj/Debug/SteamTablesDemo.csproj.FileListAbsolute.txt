@@ -1,0 +1,8 @@
+G:\geoSteamNet2016Sep\INEEL2016July\SteamTablesDemo\SteamTablesDemo\SteatTablesDemo\bin\Debug\SteamTablesDemo.exe.config
+G:\geoSteamNet2016Sep\INEEL2016July\SteamTablesDemo\SteamTablesDemo\SteatTablesDemo\bin\Debug\SteamTablesDemo.exe
+G:\geoSteamNet2016Sep\INEEL2016July\SteamTablesDemo\SteamTablesDemo\SteatTablesDemo\bin\Debug\SteamTablesDemo.pdb
+G:\geoSteamNet2016Sep\INEEL2016July\SteamTablesDemo\SteamTablesDemo\SteatTablesDemo\obj\Debug\SteatTablesDemo.frmMain.resources
+G:\geoSteamNet2016Sep\INEEL2016July\SteamTablesDemo\SteamTablesDemo\SteatTablesDemo\obj\Debug\SteamTablesDemo.Properties.Resources.resources
+G:\geoSteamNet2016Sep\INEEL2016July\SteamTablesDemo\SteamTablesDemo\SteatTablesDemo\obj\Debug\SteamTablesDemo.csproj.GenerateResource.Cache
+G:\geoSteamNet2016Sep\INEEL2016July\SteamTablesDemo\SteamTablesDemo\SteatTablesDemo\obj\Debug\SteamTablesDemo.exe
+G:\geoSteamNet2016Sep\INEEL2016July\SteamTablesDemo\SteamTablesDemo\SteatTablesDemo\obj\Debug\SteamTablesDemo.pdb
